@@ -1,0 +1,7 @@
+[package]
+name = "chromaprint"
+version = "0.1.0"
+authors = ["James Hurst <jamesrhurst@outlook.com>"]
+
+[dependencies]
+libc = "*"
