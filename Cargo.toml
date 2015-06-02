@@ -4,9 +4,9 @@ version = "0.1.0"
 authors = ["James Hurst <jh.jameshurst@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/jamesrhurst/rust-chromaprint"
-repository = "https://github.com/jamesrhurst/rust-chromaprint"
-documentation = "https://jamesrhurst.github.io/rust-chromaprint"
+homepage = "https://github.com/jameshurst/rust-chromaprint"
+repository = "https://github.com/jameshurst/rust-chromaprint"
+documentation = "https://jameshurst.github.io/rust-chromaprint"
 description = "Bindings to Chromaprint"
 
 [dependencies]
