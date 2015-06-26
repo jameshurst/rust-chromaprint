@@ -1,8 +1,7 @@
-#![feature(collections)]
 extern crate libc;
 
 use std::ffi::CStr;
-use std::{ptr, mem};
+use std::{ptr, mem, slice};
 
 pub type ChromaprintContext = *mut ::libc::c_void;
 pub type ChromaprintAlgorithm = ::libc::c_int;
@@ -102,7 +101,7 @@ impl Chromaprint {
         let mut array: *mut ::libc::c_int = ptr::null_mut();
         let mut size: ::libc::c_int = 0;
         if unsafe { chromaprint_get_raw_fingerprint(self.ctx, mem::transmute::<_, *mut *mut ::libc::c_void>(&mut array), &mut size) } == 1 {
-            let fingerprint = unsafe { Vec::from_raw_buf(array, size as usize) };
+            let fingerprint = unsafe { slice::from_raw_parts(array, size as usize).to_vec() };
             unsafe { chromaprint_dealloc(array as *mut ::libc::c_void) }
             return Some(fingerprint);
         }
@@ -119,7 +118,7 @@ impl Chromaprint {
                                            &mut size, base64 as ::libc::c_int) 
         };
         if result == 1 {
-            let encoded = unsafe { Vec::from_raw_buf(array, size as usize) };
+            let encoded = unsafe { slice::from_raw_parts(array, size as usize).to_vec() };
             unsafe { chromaprint_dealloc(array as *mut ::libc::c_void) }
             return Some(encoded);
         }
@@ -137,7 +136,7 @@ impl Chromaprint {
                                            &mut size, &mut algorithm, base64 as ::libc::c_int)
         };
         if result == 1 {
-            let decoded = unsafe { Vec::from_raw_buf(array, size as usize) };
+            let decoded = unsafe { slice::from_raw_parts(array, size as usize).to_vec() };
             unsafe { chromaprint_dealloc(array as *mut ::libc::c_void) }
             return Some((decoded, algorithm));
         }
