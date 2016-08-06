@@ -10,4 +10,4 @@ documentation = "https://jameshurst.github.io/rust-chromaprint"
 description = "Bindings to Chromaprint"
 
 [dependencies]
-libc = "*"
+libc = "0.2.15"
