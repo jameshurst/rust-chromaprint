@@ -1,4 +1,4 @@
-#rust-chromaprint
+# rust-chromaprint
 
 [![Build Status](https://travis-ci.org/jameshurst/rust-chromaprint.svg)](https://travis-ci.org/jameshurst/rust-chromaprint)
 [![](http://meritbadge.herokuapp.com/chromaprint)](https://crates.io/crates/chromaprint)
