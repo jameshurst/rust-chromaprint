@@ -79,7 +79,7 @@ impl Chromaprint {
         unsafe { chromaprint_start(self.ctx, sample_rate, num_channels) == 1 }
     }
 
-    pub fn feed(&mut self, data: &[u8]) -> bool {
+    pub fn feed(&mut self, data: &[i16]) -> bool {
         unsafe { chromaprint_feed(self.ctx, data.as_ptr() as *const ::libc::c_void, data.len() as ::libc::c_int) == 1 }
     }
 
